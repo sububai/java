@@ -1,0 +1,67 @@
+Java IO系统
+
+1、输入和输出
+  1.1、InputStream：标志从不同起源地产生输入的类
+  起源地包括
+    字节数组    ByteArrayInputStream
+    String对象  StringBufferInputStream
+    文件        FileInputStream
+    管道        PipedInputStream
+    一系列其他流 SequenceInputStream
+    其他起源地 FilterInputStream，如Internet连接用bufferedInputStream
+  1.2、OutputStream：决定了输入往何处去
+    字节数组 ByteArrayOutputStream
+    文件    FileOutputStream
+    管道    PipedOutputStream
+    其他起源地 FilterOutputStream
+
+2、添加属性和有用的接口
+    装饰模式：利用层次化对象动态和透明地添加单个对象的能力
+    封装于初始化对象中的所有对象都有相同的接口，以便利用透明性质
+
+    2.1、通过FilterInputStream从InputStream里读入数据
+      DataInputStream：读取不同基本类型数据和String对象
+      剩下的类用户修改InputStream的内部行为方式：是否进行缓冲，是否跟踪自己读入的数据行，能否会后一个字符
+      FilterInputStream的类型
+        DataInputStream和DataOutputStream联合使用，是自己能以机动方式读取一个流中的基本数据类型
+        BufferedInputStream：避免每次想要更多数据是都要进行物理性的读取，告诉他在缓冲区找InputStream
+        LineNumberInputStream：跟踪输入流的行号
+        PushbackInputStream：有一个字节的后退缓冲区
+    2.2、通过FilterOutputStream向OutputStream里写入数据
+      FilterOutputStream的类型
+        DataOutputStream：写入基本数据类型
+        PrintStream：用于产生格式化输出
+        BufferedOutputStream：用它避免每次发出数据的时候都要进行物理性的写入，先从缓冲区里写入
+3、本身的缺陷：RandomAccessFile (implements DataOutput, DataInput)
+    用于包含了已知长度记录的文件，以便用seek()从一条记录移至另一条，然后读取或修改那些记录
+    可以看作DataInputStream和DataOutputStream的联合使用
+    优点：有搜索功能(seek)，其他数据流类型没有
+    缺点：只能对文件操作
+
+4、File类
+  File：文件和目录，更像一个"FilePath"
+  4.1、目录列表器
+    调用list(),可以通过filter过滤目录结果
+  4.2、检查和创建目录
+    mkdirs()
+5、IO流的典型应用
+  5.1、输入流
+    缓冲的输入文件：FileInputStream->BufferedInputStream->DataInputStream
+    内存输入：StringBufferInputStream
+    格式化内存输入：StringBufferInputStream->DataInputStream
+    行的编号和文件输出：编号 LineNumberInputStream->DataInputStream
+      文件输出  FileOutputStream->BufferedOutputStream->PrintStream
+  5.2、输出流
+    保存和恢复数据：PrintStream能格式化数据，使其能按我们的习惯阅读。但为了输出数据，用DataOutputStream
+    读写随机访问文件：RandomAccessFile不能和InputStream及OutputStream子类的任何部分关联
+  5.3、快捷文件处理
+  5.4、从标准输入中读取数据：把文件换成输入流System.in
+6、StreamTokenizer：将任何InputStream分割成记号
+
+7、Java1.1的IO流：字符层次
+  Reader：InputStream通过InputStreamReader转换成Reader
+  Writer：OutputStream通过OutputStreamWriter转换成Writer
+8、压缩
+  ZipOutputStream:将数据压缩成Zip文件格式
+  ZipInputStream:解压用Zip文件格式保存的数据
+9、对象序列化(Serialization)
