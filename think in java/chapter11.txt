@@ -1,0 +1,39 @@
+运行期类型鉴定(RTTI,Run-Time Type Identification)
+
+1、对RTTI的需要：将Object造型成具体的一个类，通过这个类的对象操作子类
+  1.1、Class对象
+    程序中的每个类都有一个Class对象，保存了该类有关的信息(元类)，在同名的.class文件中。
+    运行期，一旦想要生成那个类的一个对象，JVM就会检车那个类型的Class对象是否已经载入，若尚未载入，则载入同名的.class文件。
+    所以Java程序启动时不是所有的类都载入
+    class.forName("classNmae")可以获取某个类的Class对象
+
+    类标记：boolean.class == Boolean.Type
+        ...
+
+  1.2、造型前的检查
+    RTTI的形式包括：
+      经典造型，如"Shape"，用RTTI确保造型的正确，在遇到失败的造型后产生ClassCastException违例
+      代表对象类型的Class对象。可查询Class对象，获取有用的运行期资料
+
+    在C++中，经典造型不执行RTTI，只是简单地告诉编译器将对象当作新类型处理
+    Java要执行类型检查，叫做“类型安全”的下溯造型。
+      Circle造型到Shape叫上溯造型，Shape造型到Circle叫下溯造型。
+      上溯一定安全，下溯可能不安全，所以需要检查
+
+    RTTI在Java中有三种形式。instanceof判断对象是不是一个特定类型的实例，返回布尔值
+      if (x instanceof Dog) ((Dog)x).bark();
+    Class.forName("ClassName"):运行时检查违例
+    ClasssName.class：编译时检查，不用抛出违例
+
+    instanceof：静态
+    isInstance()：动态
+
+2、RTTI语法
+  Class.forName(ClassName)：reflect
+  Object.getClass()
+  限制：编译器必须明确知道RTTI要处理的所有类
+
+3、反射：运行期类信息
+  Java.lang.reflect
+    member:表示一个类的field, method, custructor
+    可以通过这个库获得一个对象(类)的信息
