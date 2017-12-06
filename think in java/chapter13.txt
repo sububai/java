@@ -1,0 +1,6 @@
+窗口和程序片(applet)
+
+1、applet
+
+2、可视化编程和Beans
+  Bean：类，有一定的设计规则
