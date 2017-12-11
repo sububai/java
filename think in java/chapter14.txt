@@ -17,3 +17,18 @@
 
 2、共享有限的资源
   synchronized 方法，代码块
+
+3、堵塞
+  线程的状态：
+    new：已创建，尚未启动
+    runnable：如果被cpu调用可以立即运行
+    dead：运行完run(),或者stop()，destroy()被调用
+    blocked：可以运行，但是被某种东西阻碍。进入runnable状态才可以运行
+  堵塞的原因
+    调用sleep(),在规定时间内不可运行
+    调用suspend()，收到resume()之前不可运行
+    调用wait(),收到notify或notifyAll()之前不可运行
+    等待一些IO操作完成
+    线程调用另一个对象的同步方法，但那个对象处于锁定状态
+
+  为了减少死锁的可能，Java1.2不支持使用stop，suspend，resume，destroy
