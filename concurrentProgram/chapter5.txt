@@ -1,0 +1,31 @@
+基础构建模块：Java类库
+
+1、同步容器类：vector、hashtable、Collections.synchronizedXxx
+  1.1、使用这些类也要注意是否要加锁来保证复合操作的安全性
+  1.2、fail-fast（源码注释里有提到）迭代器在发现容器被修改会产生异常
+    解决方法：容器加锁、迭代容器副本
+  1.3、隐藏的迭代器：有些方法可能会隐式调用到迭代器，所以也要对这些方法进行同步
+
+2、并发容器：提供线程安全的容器类
+  2.1、ConcurrentHashMap
+    分段锁：不是把全部的容器都锁住，把容器分段，进行分段同步
+    hashtable和synchronized则是锁住整个map
+  2.2、ConcurrentHashMap里添加了常见的复合操作，并且线程安全
+    如：putifabsent、remove、replace等
+  2.3、写入时复制(copy-on-write)
+    修改时创建新的容器副本，让引用指向这个副本
+    迭代容器时不用加锁或者复制
+
+3、阻塞队列和生产者-消费者模式
+  阻塞队列是一种数据结构：put和take可阻塞
+    Java类库实现：LinkedBlockingQueue 类似linkedlist
+                ArrayBlockQueue 类似arraylist
+                PrioriityBlockingQueue 按优先级排序
+                SynchronousQueue没有实际存储功能，直接将任务交给线程
+  生产者-消费者是一种设计模式
+
+  双端队列和工作密取(deque和work stealing)
+    实现：LinkedBlockingDeque
+    工作密取：每个消费者有一个双端队列，当完成了自己队列的全部工作会去其他消费者尾端获取工作
+
+  闭锁、信号量、栏栅
