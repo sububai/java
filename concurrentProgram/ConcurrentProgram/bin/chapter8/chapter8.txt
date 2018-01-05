@@ -1,0 +1,19 @@
+线程池的配置和使用
+
+1、任务和策略的耦合
+	使用线程池想要将任务和执行策略解耦，但是任务还是和执行策略有一定的关联，如
+		依赖性任务：依赖于其他任务，所以若被依赖的任务阻塞，此任务就会阻塞
+		线程封闭任务：线程池必须单线程
+		响应性敏感任务：线程池需要快速响应每个任务
+		使用ThreadLocal的任务：ThreadLocal是在本地使用的，不能在多线程间传递
+
+2、线程池的大小
+	线程池中线程的数量应该和cpu的数量有关，才能是cpu的效率最高
+
+3、配置ThreadPoolExecutor
+	创建：Executors中的工厂方法或者ThreadPoolExecutor的构造方法
+	管理BlockingQueue
+	选择饱和策略(阻塞队列满时采用的策略)
+	选择线程工厂用来创建线程
+	创建完也可以设置线程池，将Executor转换为ThreadPoolExecutor
+	扩展ThreaPoolExecutor，beforeExecute，afterExecute，terminate(线程池关闭时调用)
