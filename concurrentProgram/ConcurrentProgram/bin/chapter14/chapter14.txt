@@ -1,0 +1,42 @@
+构建自定义的同步工具
+
+1、状态依赖性的管理
+	单线程：如果某个方法的前提条件不满足就要失败
+	多线程：如果某个方法的前提条件不满足可以阻塞等待条件满足或者超时或者被中断
+		将前提条件的失败传递给调用者，抛出异常,GrumpyBoundedBuffer.java
+		通过轮询和休眠实现简单的阻塞,如果失败进入休眠，休眠结束再次调用此方法，支持中断来取消此次调用，SleepBoundedBuffer.java
+		条件队列，一组线程通过某种方式等待特定的条件成真，对上一个进行了优化
+		
+2、使用条件队列
+	条件谓词：先持有锁，若满足条件谓词则继续执行，否则释放锁，进入条件队列
+	过早唤醒，由于线程醒来不一定就是条件谓词为真，所以需要再次判断
+	丢失的信号
+	通知，notifyAll性能低但安全，notify可能会导致信号丢失
+	阀门类
+	子类的安全问题：可继承的类需要将状态变量、等待和通知公开
+		不可继承则不需要
+	封装条件队列
+	入口协议和出口协议：描述了wait和notify的正确使用
+	
+3、显式的Condition对象：是显式的条件队列
+	await和signal对应wait和notify
+	使用见ConditionBoundedBuffer.java
+	
+4、Synchronizer剖析
+	ReetrantLock 和 Semaphore有许多共同点。
+	都可以用作一个阀门，每次只允许一定数量的线程通过，线程到达阀门时，
+	可以通过，可以等待，还可以取消。
+	都支持可中断的、不可中断的以及限时的获取操作
+	都支持等待线程执行公平或非公平的队列操作
+
+5、AbstractQueuedSynchronizer
+	构建锁和同步器的框架，许多同步器都是通过AQS创建的
+	主要有获取(acquire)和释放(release)操作
+	使用见OneShotLatch.java
+	
+6、java.util.concurrent同步器类中的AQS
+	ReentrantLock只支持独占的获取操作
+	Semaphore和CountDownLatch
+	FutureTask
+	ReentrantReadWriteLock
+	
