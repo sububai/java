@@ -1,0 +1,2 @@
+BlockingQueue:Queue的多线程版本，添加会保证队列不满，获取会保证队列不空
+Callable:类似于Runnable，但是call()会返回结果并且可以抛出异常
