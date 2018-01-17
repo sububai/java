@@ -1,0 +1,47 @@
+并发
+
+66、同步访问共享的可变数据
+	同步保证了安全性和可见性
+	当多个线程共享可变数据时，每个读或者写数据的线程都必须执行同步
+	
+67、避免过度同步
+	过度同步可能导致性能降低、死锁，甚至不确定行为
+	要将外来方法的调用移出同步的代码块
+	在同步区域之外被调用的外来方法被称作开放调用
+	通常，在同步区域内做尽可能少的工作
+	
+68、executor和task优先于线程
+	Thread既是工作单元，又是执行机制。
+	task(Runnable/Callable)是工作单元，executor是执行机制
+	
+69、并发工具优先于wait和notify
+	Executor Framework、并发集合(Concurrent Collection)、同步器(Synchronizer)
+	并发集合为标准的集合接(List、Queue和Map)提供了高性能的并发实现，如ConcurrentMap、BlockingQueue
+	同步器是一些使线程能够等待另一个线程的对象，允许它们协调动作，如CountDownLatch和Semaphore
+	wait和notify应该使用标准的模式从while循环内部调用wait，优先使用notifyAll
+	
+70、线程安全性的文档化
+	线程安全性的级别
+		不可变的(immutable)：String、Long、BigInteger
+		无条件的线程安全(unconditionally thread-safe)：Random、ConcurrentHashMap
+		有条件的线程安全(conditionally thread-safe)：Collections.synchronized包装返回的集合
+		非线程安全(not thread-safe)：ArrayList、HashMap
+		线程对立的(thread-hostile)：System.runFinalizersOnExit(),已经被废除
+	有条件的线程安全类必须在文档中指明哪个方法调用序列需要外部同步，以及在执行这些序列时要获得哪把锁
+	无条件的线程安全类，考虑使用私有锁对象代替同步的方法
+	
+71、慎用延迟初始化
+	延迟初始化(lazy initialization)：延迟到需要域的值时才将它初始化
+	对于实例域，使用双重检查模式；对于静态域，使用holder class
+	
+72、不要依赖于线程调度器
+	确保可运行线程的平均数量不明显多于处理器的数量
+	因为Thread.yield没有可测试的语义，所以不要通过调用Thread.yield来修正程序
+	Thread.yield的唯一用途是在测试期间人为地增加程序的并行性
+	线程优先级是Java平台最不可移植的特征，不要通过调整某些线程的优先级来改善应用程序的响应能力
+	
+73、避免使用线程组
+	Thread group可以把Thread的某些基本功能应用到一组线程上
+	当线程抛出未被捕获的异常时，用ThreadGroup.uncaughtException获得控制权
+	现在被Thread.setUncaughtExceptionHandler代替
+	如果一个类需要处理线程的逻辑组，用executor
