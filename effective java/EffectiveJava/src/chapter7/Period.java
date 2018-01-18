@@ -1,10 +1,14 @@
 package chapter7;
 
+import java.io.IOException;
+import java.io.InvalidObjectException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Date;
 
-public final class Period {
-	private final Date start;
-	private final Date end;
+public final class Period implements Serializable{
+	private Date start;
+	private Date end;
 	
 	/**
 	 * @param start the beginning of the period
@@ -25,4 +29,32 @@ public final class Period {
 	public Date end() {
 		return new Date(end.getTime());
 	}
+	
+	@Override public String toString() { return start + " - " + end; }
+	
+	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+		throw new InvalidObjectException("Proxy required");
+	}
+	
+	private Object writeReplace() {
+		return new SerializationProxy(this);
+	}
+	
+	
+	 private static class SerializationProxy implements Serializable {
+
+			private static final long serialVersionUID = 1L;
+			private final Date start;
+			private final Date end;
+			
+			public SerializationProxy(Period p) {
+				// TODO Auto-generated constructor stub
+				this.start = p.start;
+				this.end = p.end;
+			}
+			
+			private Object readResolve() {
+				return new Period(start, end);
+			}
+		}
 }
