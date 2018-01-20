@@ -1,0 +1,27 @@
+第二章：装配Bean
+2.1、spring配置的可选方案
+	XML中显示配置
+	Java中显示配置
+	隐式Bean发现机制和自动装配
+	
+2.2、自动装配Bean
+	通过组件扫描和自动装配机制来装配Bean
+	@Component使Bean可被发现(扫描，Java中有个类似的注解@Named
+	@ComponentScan设置扫描包
+	@Autowired自动装配，Java中有个类似的注解@Inject
+	
+2.3、Java代码装配Bean
+	创建一个JavaConfig类
+	@Bean
+	下面是一个返回Bean的方法
+	
+2.4、通过XML装配Bean
+	<Beans 声明XML模式文件，根命名空间>
+		<Bean>
+			<constructor-arg> / c-命名空间		————		对应构造器方法注入
+			<property> / p-命名空间				————		对应setter方法注入
+			
+2.5、混合配置
+	在JavaConfg中可以使用@Import导入其他JavaConfig配置
+					使用@ImportResource导入XML配置
+	在XML中使用<import>导入其他Java配置或者XML配置
