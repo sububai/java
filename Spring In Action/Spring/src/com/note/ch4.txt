@@ -1,0 +1,23 @@
+第四章：面向切面的spring
+
+4.1、面向切面编程
+	通知：定义了切面要完成的工作以及何时执行
+	连接点：应用程序插入切面的一个点
+	切点：通知所要织入的连接点
+	切面：通知和切点的集合
+	
+	spring基于动态代理，只支持方法切入点
+	AspectJ和JBoss除了方法切入点，还支持字段和构造器切入
+	
+4.2、通过切点选择连接点
+	使用切点表达式定义切点，如execution(* concent.Performance.perform(..))
+	
+4.3、使用注解创建切面
+	@Aspect 修饰类
+		@Before @After等定义方法级别的切入点
+		@DeclareParents引入新功能，可以引入一个类
+		
+4.4、在XML中声明切面
+	以非入侵的方式声明切面
+	<aop:aspect>
+		<aop:before pointcut="" method="">

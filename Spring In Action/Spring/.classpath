@@ -39,5 +39,8 @@
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-webmvc-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-webmvc-portlet-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/data/jar/aspectj-1.8.13.jar"/>
+	<classpathentry kind="lib" path="E:/data/jar/aspectj-1.8.13-src.jar"/>
+	<classpathentry kind="lib" path="E:/data/jar/aspectjweaver.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
