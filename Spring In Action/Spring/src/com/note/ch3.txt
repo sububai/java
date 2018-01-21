@@ -1,0 +1,33 @@
+第三章：高级装配
+3.1、环境与profile
+	不同的环境可能需要不同的Bean
+	如果一个Bean声明在一个profile中，只有当指定的profile激活时该Bean才能被创建
+	在JavaConfig中的类上或是方法上声明@profile("")
+	在XML中的根命名空间 profile=""或是在根Beans中嵌套定义Beans
+	profile的状态保存在spring.profiles.active和spring.profiles.default
+	如果设置两个属性，如下
+		作为DispatcherServlet的初始化参数
+		作为web应用的上下文参数
+		作为JNDI条目
+		作为环境变量
+		作为JVM的系统属性
+		在集成测试类上，使用@ActiveProfiles注解设置
+		
+3.2、条件化的bean
+	@Conditional 对bean注解，如果条件为真则创建bean，否则忽视bean
+	条件在Condition接口的matches()定义，实现该接口来给出具体条件
+	在spring4中@Profile通过@Conditional和Condition实现
+	
+3.3、处理自动装配的歧义性
+	自动装配时有可能会有多个可选的bean，用@Primary 确定首选bean
+	如果有多个首选bean，可以用@Qualifier进行限制，可以定义多个限制
+	
+3.4、bean的作用域
+	单例：整个应用只创建一个实例
+	原型：每次注入或从应用上下文获取都创建新的实例
+	会话：web应用中，每个会话创建一个实例
+	请求：web应用中，每个请求创建一个实例
+	使用@Scope来选择作用域，可以用proxyMode设置代理，基于接口或类的代理
+	
+3.5、SpEL：在运行时注入时，可以使用SpEL来表示动态的值
+	#{ ... }

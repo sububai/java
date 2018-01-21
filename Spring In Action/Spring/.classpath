@@ -18,7 +18,11 @@
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-aop-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-aspects-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-beans-4.3.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-context-4.3.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-context-4.3.9.RELEASE.jar" sourcepath="C:/Users/苏不败/Desktop/pdf/spring-framework-master.zip">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-context-support-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-core-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/data/jar/spring-framework-4.3.9.RELEASE/libs/spring-expression-4.3.9.RELEASE.jar"/>
