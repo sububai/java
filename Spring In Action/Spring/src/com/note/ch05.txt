@@ -1,0 +1,17 @@
+第五章：构建Spring Web应用程序
+
+5.1、Spring MVC起步
+	配置DispatherServlet
+		基于JavaConfig 如spittr.config.WebConfig
+		基于XML配置
+
+5.2、编写基础的控制器
+	在控制器的类上添加@Controller和@RequestMapping
+	在控制器的方法上添加@RequestMapping
+	
+5.3、向控制器传递参数
+	@RequestParam对方法中的参数进行注解，说明参数是request传来的
+	@PathVariable对声明在@RequestMapping中的参数进行类型声明
+	
+5.4、处理表单
+	@Valid 对输入的参数进行检验
