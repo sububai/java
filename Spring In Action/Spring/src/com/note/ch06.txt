@@ -1,0 +1,24 @@
+第六章：渲染WEB视图
+
+6.1、理解视图解析
+	视图：view，是应用根据请求返回的结果
+	在spring mvc中，控制器和视图是分开的，控制器将视图名告诉视图解析器，然后视图解析器来返回视图
+	ViewResolver中有一个返回View的方法
+	视图解析器有13中实现，常用的都是和解析JSP相关的，如下
+		InternalResourceViewResolver：解析JSP视图
+		TileViewResolver：控制JSP页面的布局
+		
+6.2、创建JSP视图
+	设置视图解析器的属性
+		前缀：prefix、后缀：suffix、标签库(JSTL,Spring标签库)：viewclass
+		
+6.3、使用Apache Tiles定义布局
+	要定义两个bean
+		TilesConfiguror：负责定位和加载Tile定义并协调生成Tiles
+		TilesViewResolver：将逻辑视图名解析成Tile
+		
+6.4、使用Thymeleaf
+	要定义三个bean
+		ThymeleafViewResolver：将逻辑视图名解析成Thymeleaf
+		SpringTemplateEngine：处理模板并渲染结果
+		TemplateResolver：加载Thymeleaf模板
