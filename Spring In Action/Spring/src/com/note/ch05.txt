@@ -1,6 +1,13 @@
 第五章：构建Spring Web应用程序
 
 5.1、Spring MVC起步
+	请求的处理过程如下：
+		请求从浏览器发送到Spring的DispatcherServlet
+		进行处理器映射来查找应该由哪个控制器处理请求
+		请求发送给选中的控制器
+		控制器处理完请求，将模型和视图名发送给DispatcherServlet
+		由特定的视图解析器来解析出视图，将模型渲染输出，通过相应对象传递给客户端
+	
 	配置DispatherServlet
 		基于JavaConfig 如spittr.config.WebConfig
 		基于XML配置

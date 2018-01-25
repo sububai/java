@@ -11,9 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("spitter.web")
+@ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
-	
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = 
@@ -25,7 +24,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(
+			DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 }
