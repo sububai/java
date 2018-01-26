@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("spittr.web")
+@ComponentScan(basePackages="spittr.web,spittr.data")
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public ViewResolver viewResolver() {
@@ -30,8 +30,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		super.addResourceHandlers(registry);
-	}
 }

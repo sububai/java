@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-<<<<<<< HEAD
   
   <!-- 设置根上下文配置文件位置 -->
   <!-- java -->
@@ -66,6 +65,5 @@
   	<servlet-name>appServlet</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping> -->
-=======
->>>>>>> parent of d915a05... xml和Java配置对比
+  
 </web-app>
