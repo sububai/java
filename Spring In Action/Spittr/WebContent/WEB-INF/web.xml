@@ -23,18 +23,18 @@
   	<param-value>com.hubuma.spitter.config.RootConfig</param-value>
   </context-param> -->
   <!-- xml -->
-  <context-param>
+<!--   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>/WEB-INF/spring/root-context.xml</param-value>
-  </context-param>
+  </context-param> -->
   
   <!-- 注册ContextLoaderListener -->
   <!-- java & xml -->
-  <listener>
+<!--   <listener>
   	<listener-class>
   		org.springframework.web.context.ContextLoaderListener
   	</listener-class>
-  </listener>
+  </listener> -->
   
   <!-- 注册DispatcherServlet -->
   <!-- java -->
@@ -52,19 +52,19 @@
   	<load-on-startup>1</load-on-startup>
   </servlet> -->
   <!-- xml -->
-  <servlet>
+<!--   <servlet>
   	<servlet-name>appServlet</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
   		<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
   	</init-param>
-  </servlet>
+  </servlet> -->
   
   <!-- 将DispatcherServlet映射到“/” -->
   <!-- java & xml -->
-  <servlet-mapping>
+<!--   <servlet-mapping>
   	<servlet-name>appServlet</servlet-name>
   	<url-pattern>/</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>

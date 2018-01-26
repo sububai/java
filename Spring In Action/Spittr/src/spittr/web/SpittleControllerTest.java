@@ -44,7 +44,7 @@ public class SpittleControllerTest {
 	}
 	
 	
-/*	@Test
+	@Test
 	public void shouldShowPagedSpittles() throws Exception {
 		List<Spittle> expectedSpittles = createSpittleList(50);
 		SpittleRepository mockRepository = mock(SpittleRepository.class);
@@ -59,5 +59,5 @@ public class SpittleControllerTest {
 			.andExpect(view().name("spittles"))
 			.andExpect(model().attributeExists("spittleList"))
 			.andExpect(model().attribute("spittleList", hasItems(expectedSpittles.toArray())));
-	}*/
+	}
 }
