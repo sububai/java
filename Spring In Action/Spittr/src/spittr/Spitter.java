@@ -3,16 +3,22 @@ package spittr;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+
 public class Spitter {
 	private Long id = 0L;
 	
 	@NotNull
-	@Size(min=5, max=30)
+	@Size(min=2, max=30)
 	private String firstName;
 	
 	@NotNull
-	@Size(min=5, max=30)
+	@Size(min=2, max=30)
 	private String lastName;
+	
+	@NotNull
+	@Email
+	private String email;
 	
 	@NotNull
 	@Size(min=5, max=16)
@@ -42,6 +48,24 @@ public class Spitter {
 		this.username = username;
 		this.password = password;
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 
 	public long getId() {
