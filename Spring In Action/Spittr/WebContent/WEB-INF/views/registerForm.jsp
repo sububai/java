@@ -8,6 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spittr</title>
+<style type="text/css">
+	span.error {
+		color:red;
+	}
+</style>
 </head>
 <body>
 <h1>Register</h1>
@@ -18,7 +23,7 @@
 	Username: <input type="text" name="username" /><br/>
 	Password: <input type="password" name="password" /><br/> -->
 	First Name: <sf:input path="firstName"/>
-		<sf:errors path="firstName"></sf:errors><br/>
+		<sf:errors path="firstName" cssClass="error"></sf:errors><br/>
 	Last Name: <sf:input path="lastName"/>
 		<sf:errors path="lastName"></sf:errors><br/>
 	Email: <sf:input path="email"/>

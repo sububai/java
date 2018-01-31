@@ -3,9 +3,11 @@ package spittr.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -16,8 +18,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @EnableWebMvc
 @ComponentScan(basePackages="spittr.web, spittr.data")
 public class WebConfig extends WebMvcConfigurerAdapter {
-/*	JSP视图解析
- * 	@Bean
+/*	JSP视图解析*/
+  	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = 
 				new InternalResourceViewResolver();
@@ -26,9 +28,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setExposeContextBeansAsAttributes(true);
 		resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
 		return resolver;
-	}*/
+	}
 	
-	 @Bean    
+/*	 @Bean    
      public ITemplateResolver  templateResolver() {    
          SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();    
          templateResolver.setTemplateMode("HTML5");    
@@ -55,7 +57,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
          viewResolver.setTemplateEngine(templateEngine);    
          viewResolver.setCharacterEncoding("utf-8");    
          return viewResolver;    
-     }    
+     }    */
 	
 	@Override
 	public void configureDefaultServletHandling(

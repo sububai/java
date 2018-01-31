@@ -28,6 +28,7 @@ public class SpittleRepoImpl implements SpittleRepository {
 	@Override
 	public Spittle findOne(long id) {
 		// TODO Auto-generated method stub
+		//return null; will be 404
 		return new Spittle("Hello world! The fist ever spittle", new Date());
 	}
 

@@ -44,14 +44,16 @@ public class SpitterController {
 	
 	@RequestMapping(value="/register", method=POST)
 	public String processRegistration(
-			@RequestPart("profilePicture") MultipartFile profilePicture,
-			@Valid Spitter spitter, Errors errors) throws IllegalStateException, IOException {
+			//@RequestPart("profilePicture") MultipartFile profilePicture,
+			@Valid Spitter spitter, Errors errors, Model model) throws IllegalStateException, IOException {
 		if (errors.hasErrors())
 			return "registerForm";
 		
-		profilePicture.transferTo(new File("/data/spittr/" + profilePicture.getOriginalFilename()));
+		//profilePicture.transferTo(new File("/data/spittr/" + profilePicture.getOriginalFilename()));
 		spitterRepository.save(spitter);
-		return "redirect:/spitter/" + spitter.getUsername();
+		/*return "redirect:/spitter/" + spitter.getUsername();*/
+		model.addAttribute("username", spitter.getUsername());
+		return "redirect:/spitter/{username}";
 	}
 	
 	@RequestMapping(value="/{username}", method=GET)
