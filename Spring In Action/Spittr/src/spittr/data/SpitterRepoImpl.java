@@ -8,9 +8,9 @@ import spittr.Spitter;
 public class SpitterRepoImpl implements SpitterRepository {
 
 	@Override
-	public Spitter save(Spitter spitter) {
+	public void addSpitter(Spitter spitter) {
 		// TODO Auto-generated method stub
-		return spitter;
+		
 	}
 
 	@Override

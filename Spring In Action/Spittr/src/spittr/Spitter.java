@@ -112,6 +112,13 @@ public class Spitter {
 		return "Spitter [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + "]";
 	}
+
+
+
+	public boolean isUpdateByEmail() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 	
 }
