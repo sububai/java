@@ -6,13 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.validation.Valid;
@@ -50,7 +46,7 @@ public class SpitterController {
 			return "registerForm";
 		
 		//profilePicture.transferTo(new File("/data/spittr/" + profilePicture.getOriginalFilename()));
-		spitterRepository.save(spitter);
+		spitterRepository.addSpitter(spitter);
 		/*return "redirect:/spitter/" + spitter.getUsername();*/
 		model.addAttribute("username", spitter.getUsername());
 		return "redirect:/spitter/{username}";
