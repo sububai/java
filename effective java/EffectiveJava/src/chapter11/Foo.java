@@ -15,7 +15,7 @@ public class Foo extends AbstractFoo implements Serializable {
 		initialize(x, y);
 	}
 	private void writeObject(ObjectOutputStream s) throws IOException {
-		s.defaultWriteObject();
+		((ObjectOutputStream) s).defaultWriteObject();
 		
 		//手动序列化超类的状态
 		s.writeInt(getX());
