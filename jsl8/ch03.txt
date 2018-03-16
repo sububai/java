@@ -1,0 +1,44 @@
+词汇结构
+
+3.1、Unicode
+	Java程序使用Unicode字符集编写，从jdk1.1就开始了
+	一开始以固定16位长度编码，后来可以接受超过16位的字符
+	
+3.2、Lexical Translations
+	1.Unicode生字符流转换成对应的字符
+	2.步骤1得到的Unicode流转换为输入字符流和行结束符
+	3.将由步骤2得到的输入字符和行终止符的流转换为在空白和注释之后被抛弃的输入元素序列，其包括作为结束标志的令牌
+
+3.3、Unicode Escapes
+	UnicodeInputCharacter:
+		UnicodeEscape，需要转义的字符
+		RawInputCharacter，原生输入字符，不需转义
+	UnicodeEscape:\ UnicodeMarker HexDigit HexDigit HexDigit HexDigit
+		如：\ u xxxx
+
+3.4、Line Terminators
+	ASCII LF, newline '/n'
+	ASCII CR, return '/r'
+	CR可以跟在LF后面
+
+3.5、Input Elements and Tokens
+	Input:    {InputElement} [Sub]
+	InputElement:
+		WhiteSpace
+		Comment
+		Token
+	Sub:
+		the ASCII SUB character, also known as "control-Z"
+
+3.6、White Space
+	空白
+	SP"空格"、HT"tab"、FF"换页"
+
+3.7、Comments
+	注释
+	/* text */
+	// text
+
+3.8、Identifiers
+	IdentifierChars:
+		JavaLetter {JavaLetterOrDigit}
