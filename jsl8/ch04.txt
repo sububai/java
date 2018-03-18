@@ -1,0 +1,20 @@
+类型、值和变量
+	Java是静态类型语言，每个变量和表达式在编译时只有一个类型
+		强类型语言，类型限制变量或表达式的值
+
+4.1、The Kinds of Types and Values
+	Type:
+		PrimitiveType
+			Integral Type: 
+				byte: -128 ~ 127
+				short: -2^15 ~ 2^15-1
+				int: -2^32 ~ 2^32-1
+				long: -2^63 ~ 2^63-1
+				char: '\u0000' ~ '\uffff'
+			Floating-Point Type:
+				s * m * 2^(e-N+1) ; 0<m<2^N; -(2^(K-1)-2)<=e<=2^(K-1)-1
+				float: N = 24, K=8; double: N=53, K=11;
+		ReferenceType
+			ClassOrInterfaceType: Class, Interface
+			TypeVariable
+			ArrayType
