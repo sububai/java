@@ -1,0 +1,37 @@
+Conversions and Contexts
+
+5.1 kinds of Conversion
+	Identity Conversion：转换成同类型
+	Widening Primitive Conversion：基本数据类型，从小到大的转换
+	Narrowing Primitive Conversion：基本数据类型，从大到小的转换
+	Widening and Narrowing Primitive Conversion：byte to char
+	Widening Reference Conversion：转换成父类型
+	Narrowing Reference Conversion：转换成子类型
+	Boxing Conversion：装箱，基本类型 to 包装类型
+	Unboxing Conversion：拆箱，包装类型 to 基本类型
+	Unchecked Conversion：G to G<T1,...,Tn> 未检查的参数化类型
+	Capture Conversion：G<T1...Tn> to G<S1...Sn>
+	String Conversion：任一类型 to String （通过toString()）
+	Forbidden Conversions：没有明确允许的转换是禁止的
+	Value Set Conversion：浮点数的转换
+
+5.2 Assignment Contexts
+	赋值上下文允许表达式的值赋值到变量，表达式的类型必须转换到变量类型
+	
+5.3 Invocation Contexts
+	调用上下文允许在方法调用中的参数被赋值给相应的形参。
+
+5.4 String Contexts
+	字符串上下文仅仅适用于 + ，一个不是String ，另一个是String
+
+5.5 Casting Contexts
+	转换上下文允许转换操作的操作数转换成cast指定的类型
+	Reference Type Casting
+	Checked Casts and Unchecked Casts
+	Checked Casts at Run Time：cast操作
+
+5.6 Numeric Contexts
+	数字上下文应用在算数运算中的操作数
+		包括 Identity conversion、widening primitive conversion、unboxing conversion
+	unary numeric promotion:一元算数运算
+	binary numeric promotion
